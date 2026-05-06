@@ -24,8 +24,8 @@ From a command-line, enter `python build.py` to create the model team. A list of
 Using the Coder Models
 ======================
 
-Load the coding assistants in a Python shell:
-    from craft import *
+Load the coding assistants in a Python shell:  
+`from craft import *`
 
 Four job methods can be called:
 `ask("Load CSV") # coding assistant`  
