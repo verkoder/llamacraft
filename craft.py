@@ -43,3 +43,5 @@ def plan(context: str='', file: str='', use: str=Team.coders[0][0]):
     go_team(context, file, use, 'plan')
 def code(context: str='', file: str='', use: str=Team.coders[0][0]):
     go_team(context, file, use, 'code')
+def q(context: str='', file: str='', use: str=Team.coders[0][0]):
+    go_team(context, file, use, 'q')
