@@ -38,7 +38,6 @@ class Team:
     temperature: float = Temperature.LOW # creativity
     top_k: int = TopK.LOW # chance of nonsense
     top_p: float = TopP.LOW
-    trait: str = 'You are a coding assistant.'
 
 def filestamp(model: str, job: str, file: str) -> str:
     '''generate filename path as ./output/model_job_file.ext'''

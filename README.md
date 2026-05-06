@@ -1,6 +1,6 @@
 LlamaCraft: Model Teams Made Simple
 ===================================
-LlamaCraft is an Ollama micro-scaffold for LLM assistants. Users can quickly build a team of custom local LLM variants to fit their needs. The resulting team can offer parallel approaches to problems and tasks.
+LlamaCraft is an Ollama micro-scaffold for LLM assistants. Users can quickly build a team of custom local LLM variants to offer parallel approaches to problems and tasks.
 
 Why?
 ----
@@ -16,10 +16,10 @@ Building a Model Team
 =====================
 
 Download LlamaCraft, and modify these two files:
-- `models.py` Edit according to your Ollama setup. The Team class contains the default settings, the base helper model, and the base list of nickname/model name pairs. The model names must match a pulled model shown in your 'ollama ls' results.
-- `traits.py` Edit according to your LLM needs. The default includes four Python coding assistants, plus helpers for cooking, housework & fun. The helpers spawn from a single model with different traits. The coders spawn by multiple models and traits, so with three models and four job traits, LlamaCraft creates twelve Ollama model variants.
+- `models.py` Edit according to your Ollama setup. The Team class contains the default settings, the base helper model, and the base list of nickname/model name pairs. The model names must match a pulled model as shown in your `ollama ls` results.
+- `traits.py` Edit according to your LLM needs. The default includes multiple coding assistants, plus helpers for cooking, housework & fun. The helpers spawn from a single model with different traits. The coders spawn by multiple models and traits, so with three models and five job traits, LlamaCraft creates fifteen Ollama model variants.
 
-From a command-line, enter `python build.py` to create the model team. A list of commands is printed. Enter `python build.py rm` to remove the team from Ollama.
+From a command-line, enter `python build.py` to create the model team. A list of commands is printed. Enter `python build.py rm` to remove the created team from Ollama, leaving the base models untouched.
 
 Using the Coder Models
 ======================
@@ -27,16 +27,17 @@ Using the Coder Models
 Load the coding assistants in a Python shell:  
 `from craft import *`
 
-Four job methods can be called:
+Five job methods can be called:  
 `ask("Load CSV") # coding assistant`  
 `see(file="feeds.py") # code reviewer`  
 `plan("Authorize login via Facebook") # code planner`  
-`code("Django form for Feed class", "feeds.py") # code writer`
+`code("Form for Feed class", "feeds.py") # code writer`
+`q("sites with under 4 posts") # querylist writer`
 
-All 4 jobs have the same 3 keyword arguments (kwargs):
-- context: input text; default=None
-- file: filename or list; default=None
-- use: model or list; 'all' for all models; default to first Team.coders model
+All 5 jobs have the same 3 keyword arguments (kwargs):
+- `context=` input text; default=None
+- `file=` filename or list; default=None
+- `use=` model name or list; `"all"` for all models; default to first `Team.coders` model
 
 LLM output is written to ./output as:
 - .md files (see, ask, or plan results)
@@ -54,15 +55,15 @@ Using the Helper Models
 
 [If you only want coding help in a Python shell, skip this section]
 
-Copy the printed commands, and paste to your shell resource file, bash_profile/zshrc/etc.
+Copy the printed commands (from `python build.py` above), and paste to your shell resource file, bash_profile/zshrc/etc.
 
-Restart the shell. The helper models can called by nickname, with quoted context:
+Restart the shell. The helper models can be called by nickname, with quoted context:
 > food 'chickpea onion recipes'  
-Sure! Here are some chickpea and onion recipes...
+>> Sure! Here are some chickpea and onion recipes...
 
 The coder models can be called similarly by nickname-job:
 > cog-code 'sort a dict by name, state, and age'  
-Sure! Here's a dictionary-sorting algorithm...
+>> Sure! Here's a dictionary-sorting algorithm...
 
 Customizing
 -----------

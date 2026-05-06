@@ -12,12 +12,13 @@ def make_model(name: str,
         if delete_flag:
             resp = ollama.delete(name)
             return f'Deleted [{name}] {resp.status}!', False
-        ollama.create(name, parameters=dict(
+        ollama.create(name,
+            from_=spec.get('model', Team.helper),
+            system=spec.get('trait', ''),
+            parameters=dict(
                 temperature=spec.get('temperature', Team.temperature),
                 top_k=spec.get('top_k', Team.top_k),
-                top_p=spec.get('top_p', Team.top_p)),
-            from_=spec.get('model', Team.helper),
-            system=spec.get('trait', Team.trait))
+                top_p=spec.get('top_p', Team.top_p)))
         print(f'Created [{name}]', spec)
         return Team.alias.format(name, name), True
     except Exception as e:
@@ -29,12 +30,9 @@ def make_team(delete_flag: bool) -> None:
     results: list[str] = []
     success: bool = True
     for name,model in Team.coders:
-        spec = {'model': model} # reset model
-        result, made = make_model(f'{name}-ask', spec, delete_flag)
-        results.append(result)
-        success &= made
+        spec = {'model': model}
         for job,trait in CODER_TRAITS.items():
-            spec['trait'] = trait # reuse model w/ new trait
+            spec['trait'] = trait
             result, made = make_model(f'{name}-{job}', spec, delete_flag)
             results.append(result)
             success &= made
