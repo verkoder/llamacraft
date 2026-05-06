@@ -31,13 +31,13 @@ Five job methods can be called:
 `ask("Load CSV") # coding assistant`  
 `see(file="feeds.py") # code reviewer`  
 `plan("Authorize login via Facebook") # code planner`  
-`code("Form for Feed class", "feeds.py") # code writer`
+`code("Form for Feed class", "feeds.py") # code writer`  
 `q("sites with under 4 posts") # querylist writer`
 
 All 5 jobs have the same 3 keyword arguments (kwargs):
-- `context=` input text; default=None
-- `file=` filename or list; default=None
-- `use=` model name or list; `"all"` for all models; default to first `Team.coders` model
+- `context` input text; default is None
+- `file` filename or list; default is None
+- `use` model name or list; `"all"` for all models; default is first `Team.coders` model
 
 LLM output is written to ./output as:
 - .md files (see, ask, or plan results)
