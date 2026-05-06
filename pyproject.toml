@@ -1,0 +1,6 @@
+[tool.pyright]
+venvPath='.'
+venv=".venv"
+exclude=['.venv']
+reportArgumentType=false
+reportCallIssue=false

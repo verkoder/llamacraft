@@ -1,0 +1,8 @@
+__init__.py
+__pycache__/
+_requirements/
+.venv/
+.zed/
+notes/
+output/
+*.pyc
