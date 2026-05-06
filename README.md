@@ -42,12 +42,12 @@ LLM output is written to ./output as:
 - .md files (see, ask, or plan results)
 - .py files (code results)
 
-To use different models:
-    code("Django form for Feed class", "feeds.py", ["qwen", "cog"])
+To use different models:  
+`code("Django form for Feed class", "feeds.py", ["qwen", "cog"])`  
 A separate output file will be written by each model.
 
-To input multiple files, use a list of files, or glob notation:
-    see("Find and report bugs", "./data/load_*.py")
+To input multiple files, use a list of files, or glob notation:  
+`see("Find and report bugs", "./data/load_*.py")`
 
 Using the Helper Models
 =======================
@@ -57,11 +57,11 @@ Using the Helper Models
 Copy the printed commands, and paste to your shell resource file, bash_profile/zshrc/etc.
 
 Restart the shell. The helper models can be called by nickname:
-    > food 'chickpea onion recipes'
+> food 'chickpea onion recipes'
 Sure! Here are some chickpea and onion recipes...
 
 The coder models can be called by nickname-job:
-    > cog-code 'sort a dict by name, state, and age'
+> cog-code 'sort a dict by name, state, and age'
 Sure! Here's a dictionary-sorting algorithm...
 
 Customizing
